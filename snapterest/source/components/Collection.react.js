@@ -17,7 +17,9 @@ var Collection = React.createClass({
 
     return JSON.stringify(htmlMarkup);
   },
-
+  getListOfTweetIds: function(){
+    return Object.keys(this.props.tweets);
+  },
   getNumberOfTweetsInCollection: function(){
     return this.getListOfTweetIds().length;
   },
