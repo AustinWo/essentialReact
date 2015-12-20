@@ -11,4 +11,3 @@ gulp.task('default', function() {
     .pipe(source('snapterest.js'))
     .pipe(gulp.dest('./build/'));
 });
-
