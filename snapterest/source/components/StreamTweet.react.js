@@ -32,7 +32,12 @@ var StreamTweet = React.createClass({
 
     window.snapterest.headerHtml = componentDOMRepresentation.children[0].outerHTML;
     window.snapterest.tweetHtml = componentDOMRepresentation.children[1].outerHTML;
-  }
+  },
+  componentWillUnmount: function(){
+    console.log('[Snapterest] StreamTweet: 8. Running componentWillUnmount()');
+
+    delete window.snapterest;
+  },
   render: function(){
     console.log('[Snapterest] StreamTweet: Running render()');
 
