@@ -46,7 +46,7 @@ var CollectionRenameForm = React.createClass({
 
   render: function(){
     return (
-      <form className="form-inline" onSubmit={thos.handleFormSubmit}>
+      <form className="form-inline" onSubmit={this.handleFormSubmit}>
 
         <Header text="Collection name:" />
 

@@ -17,31 +17,30 @@ var imageStyle = {
 var Tweet = React.createClass({
 
   propTypes: {
-    tweet: function(properties, propertyName, componentName){
-
+    tweet: function(properties, propertyName, componentName) {
       var tweet = properties[propertyName];
 
-      if (!tweet){
+      if (! tweet) {
         return new Error('Tweet must be set.');
       }
-      if (!tweet.media){
+
+      if (! tweet.media) {
         return new Error('Tweet must have an image.');
       }
     },
-
     onImageClick: React.PropTypes.func
   },
 
-  handleImageClick: function(){
-    var tweet = this.props.tweet:
+  handleImageClick: function () {
+    var tweet = this.props.tweet;
     var onImageClick = this.props.onImageClick;
 
-    if (onImageClick){
+    if (onImageClick) {
       onImageClick(tweet);
     }
   },
 
-  render: function(){
+  render: function () {
     var tweet = this.props.tweet;
     var tweetMediaUrl = tweet.media[0].url;
 
@@ -49,7 +48,7 @@ var Tweet = React.createClass({
       <div style={tweetStyle}>
         <img src={tweetMediaUrl} onClick={this.handleImageClick} style={imageStyle} />
       </div>
-    )
+    );
   }
 });
 

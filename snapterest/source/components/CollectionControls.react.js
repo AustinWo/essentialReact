@@ -1,5 +1,5 @@
 var React = require('react');
-var Header = requore('./Header.react');
+var Header = require('./Header.react');
 var Button = require('./Button.react');
 var CollectionRenameForm = require('./CollectionRenameForm.react');
 var CollectionExportForm = require('./CollectionExportForm.react');

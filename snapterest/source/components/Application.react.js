@@ -36,15 +36,16 @@ var Application = React.createClass({
         <div className="row">
 
           <div className="cold-md-4 text-center">
-            <Stream onAddTweetToCollection={this.onAddTweetToCollection} />
+            <Stream onAddTweetToCollection={this.addTweetToCollection} />
           </div>
 
           <div className="cold-md-8">
             <Collection
               tweets={this.state.collectionTweets}
-              onRemoveTweetFromCollection={this.state.removeTweetFromCollection}
-              onRemoveAllTweetsFromCollection={this.state.removeAllTweetsFromCollection} />
+              onRemoveTweetFromCollection={this.removeTweetFromCollection}
+              onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection} />
           </div>
+        </div>
       </div>
     );
   }

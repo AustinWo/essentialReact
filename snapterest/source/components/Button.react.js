@@ -1,4 +1,4 @@
-var React = ('react');
+var React = require('react');
 
 var buttonStyle = {
   margin: ' 10px 10px 10px 0'
