@@ -2,49 +2,24 @@ var React = require('react');
 var Stream = require('./Stream.react');
 var Collection = require('./Collection.react');
 
+// The adoption of Flux architecture allows the Stream component to manage the latest tweet, and the Collection component to manage the collection of tweets, where as Application component doesnt manage anything anymore
+
+// So Application component becomes a container component that wraps the Stream and Collection components in the additional HTML markup
+
 var Application = React.createClass({
-  getInitialState: function(){
-    return {
-      collectionTweets: {}
-    }
-  },
-  addTweetToCollection: function(tweet){
-    var collectionTweets = this.state.collectionTweets;
-    collectionTweets[tweet.id] = tweet;
-
-    this.setState({
-      collectionTweets: collectionTweets
-    });
-  },
-  removeTweetFromCollection: function(tweet){
-    var collectionTweets = this.state.collectionTweets;
-    delete collectionTweets[tweet.id];
-
-    this.setState({
-      collectionTweets: collectionTweets
-    });
-  },
-  removeAllTweetsFromCollection: function(){
-    this.setState({
-      collectionTweets: {}
-    });
-  },
   render: function(){
     return (
       <div className="container-fluid">
-
         <div className="row">
 
           <div className="cold-md-4 text-center">
-            <Stream onAddTweetToCollection={this.addTweetToCollection} />
+            <Stream />
           </div>
 
           <div className="cold-md-8">
-            <Collection
-              tweets={this.state.collectionTweets}
-              onRemoveTweetFromCollection={this.removeTweetFromCollection}
-              onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection} />
+            <Collection />
           </div>
+
         </div>
       </div>
     );
