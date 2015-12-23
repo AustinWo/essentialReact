@@ -8,7 +8,10 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["es6", "js"],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ]
@@ -27,6 +30,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "flux": "^2.1.1",
+    "object-assign": "^4.0.1",
     "react": "^0.14.0-beta3",
     "react-dom": "^0.14.0-beta3",
     "snapkite-stream-client": "^1.0.3"
