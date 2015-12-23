@@ -9,13 +9,13 @@ var CollectionStore = require('../stores/CollectionStore');
 
 var CollectionControls = React.createClass({
 
-  getInitialState: function(){
+  getInitialState: function() {
     return {
       isEditingName: false
     };
   },
 
-  getHeaderText: function(){
+  getHeaderText: function() {
     var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection;
     var text = numberOfTweetsInCollection;
     // Not managing the collection name in this component anymore, get it from CollectionStore
@@ -34,17 +34,17 @@ var CollectionControls = React.createClass({
     );
   },
 
-  toggleEditCollectionName: function(){
+  toggleEditCollectionName: function() {
     this.setState({
       isEditingName: !this.state.isEditingName
     });
   },
 
-  removeAllTweetsFromCollection: function(){
+  removeAllTweetsFromCollection: function() {
     CollectionActionCreators.removeAllTweetsFromCollection();
   },
 
-  render: function(){
+  render: function() {
 
     if (this.state.isEditingName){
       return(

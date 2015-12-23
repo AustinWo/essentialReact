@@ -27,11 +27,11 @@ function emitChange() {
 
 var TweetStore = assign({}, EventEmitter.prototype, {
 
-  addChangeListener: function (callback) {
+  addChangeListener: function(callback) {
     this.on('change', callback);
   },
 
-  removeChangeListener: function (callback){
+  removeChangeListener: function(callback) {
     this.removeListener('change', callback);
   },
 

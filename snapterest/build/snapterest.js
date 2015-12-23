@@ -26932,8 +26932,8 @@ var Collection = React.createClass({
   },
 
   render: function () {
-    var CollectionTweets = this.state.collectionTweets;
-    var numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(this.state.collectionTweets);
+    var collectionTweets = this.state.collectionTweets;
+    var numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(collectionTweets);
     var htmlMarkup;
 
     if (numberOfTweetsInCollection > 0) {
@@ -26946,7 +26946,7 @@ var Collection = React.createClass({
           numberOfTweetsInCollection: numberOfTweetsInCollection,
           htmlMarkup: htmlMarkup }),
         React.createElement(TweetList, {
-          tweets: this.state.collectionTweets })
+          tweets: collectionTweets })
       );
     }
 
@@ -27621,7 +27621,7 @@ var TweetActionCreators = require('../actions/TweetActionCreators');
 
 function initializeStreamOfTweets() {
   SnapkiteStreamClient.initializeStream(TweetActionCreators.receiveTweet);
-};
+}
 
 module.exports = {
   initializeStreamOfTweets: initializeStreamOfTweets

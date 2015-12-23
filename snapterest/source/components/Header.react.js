@@ -13,13 +13,13 @@ var headerStyle = {
 // makes this component flexible and allows for reuse
 var Header = React.createClass({
 
-  getDefaultProps: function(){
+  getDefaultProps: function() {
     return {
       text: 'Default header'
     };
   },
 
-  render: function(){
+  render: function() {
     return(
       <h2 style={headerStyle}>{this.props.text}</h2>
     );

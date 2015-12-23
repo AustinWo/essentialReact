@@ -1,4 +1,4 @@
-function getListOfTweetIds(tweets){
+function getListOfTweetIds(tweets) {
   return Object.keys(tweets);
 }
 

@@ -5,7 +5,7 @@ var formStyle = {
 };
 
 var CollectionExportForm = React.createClass({
-  render: function(){
+  render: function() {
     return(
       <form action="http://codepen.io/pen/define" method="POST" target="_blank" style={formStyle}>
         <input type="hidden" name="data" value={this.props.htmlMarkup} />

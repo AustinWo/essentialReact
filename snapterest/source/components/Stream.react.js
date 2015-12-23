@@ -5,13 +5,13 @@ var Header = require('./Header.react');
 var TweetStore = require('../stores/TweetStore');
 
 var Stream = React.createClass({
-  getInitialState: function(){
+  getInitialState: function() {
     // 1 set the component's inital tweet to the latest tweet that we get from TweetStore by using the getTweet() method
     return {
       tweet: TweetStore.getTweet()
     }
   },
-  componentDidMount: function(){
+  componentDidMount: function() {
     // 2 listen to changes on TweetStore
     TweetStore.addChangeListener(this.onTweetChange);
   },
@@ -21,11 +21,11 @@ var Stream = React.createClass({
       tweet: TweetStore.getTweet()
     });
   },
-  componentWillUnmount: function(){
+  componentWillUnmount: function() {
     // 4 when the component is about to unmount we stop listening to the changes in TweetStore
     TweetStore.removeChangeListener(this.onTweetChange);
   },
-  render: function(){
+  render: function() {
     var tweet = this.state.tweet;
 
     if (tweet){

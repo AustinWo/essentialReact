@@ -5,7 +5,7 @@ var buttonStyle = {
 };
 
 var Button = React.createClass({
-  render: function(){
+  render: function() {
     return (
       <button
         className="btn btn-default"

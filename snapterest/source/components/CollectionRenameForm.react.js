@@ -17,18 +17,18 @@ var CollectionRenameForm = React.createClass({
       inputValue: CollectionStore.getCollectionName()
     };
   },
-  setInputValue: function(inputValue){
+  setInputValue: function(inputValue) {
     this.setState({
       inputValue: inputValue
     });
   },
 
-  handleInputValueChange: function(event){
+  handleInputValueChange: function(event) {
     var inputValue = event.target.value;
     this.setInputValue(inputValue);
   },
 
-  handleFormSubmit: function(event){
+  handleFormSubmit: function(event) {
     event.preventDefault();
 
     var collectionName = this.state.inputValue;
@@ -36,7 +36,7 @@ var CollectionRenameForm = React.createClass({
     this.props.onCancelCollectionNameChange();
   },
 
-  handleFormCancel: function(event){
+  handleFormCancel: function(event) {
     event.preventDefault();
 
     var collectionName = CollectionStore.getCollectionName();
@@ -44,11 +44,11 @@ var CollectionRenameForm = React.createClass({
     this.props.onCancelCollectionNameChange();
   },
 
-  componentDidMount: function(){
+  componentDidMount: function() {
     this.refs.collectionName.focus();
   },
 
-  render: function(){
+  render: function() {
     return (
       <form className="form-inline" onSubmit={this.handleFormSubmit}>
 

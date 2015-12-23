@@ -29,19 +29,19 @@ function emitChange() {
 
 var CollectionStore = assign({}, EventEmitter.prototype, {
 
-  addChangeListener: function (callback) {
+  addChangeListener: function(callback) {
     this.on(CHANGE_EVENT, callback);
   },
 
-  removeChangeListener: function (callback) {
+  removeChangeListener: function(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
-  getCollectionTweets: function () {
+  getCollectionTweets: function() {
     return collectionTweets;
   },
 
-  getCollectionName: function () {
+  getCollectionName: function() {
     return collectionName;
   }
 

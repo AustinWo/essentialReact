@@ -7,7 +7,7 @@ var Collection = require('./Collection.react');
 // So Application component becomes a container component that wraps the Stream and Collection components in the additional HTML markup
 
 var Application = React.createClass({
-  render: function(){
+  render: function() {
     return (
       <div className="container-fluid">
         <div className="row">

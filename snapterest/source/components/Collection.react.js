@@ -33,7 +33,7 @@ var Collection = React.createClass({
     });
   },
 
-  createHtmlMarkupStringOfTweetList: function(){
+  createHtmlMarkupStringOfTweetList: function() {
     var htmlString = ReactDOMServer.renderToStaticMarkup(
       <TweetList tweets={this.state.collectionTweets} />
     );
@@ -45,9 +45,9 @@ var Collection = React.createClass({
     return JSON.stringify(htmlMarkup);
   },
 
-  render: function(){
-    var CollectionTweets = this.state.collectionTweets;
-    var numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(this.state.collectionTweets);
+  render: function() {
+    var collectionTweets = this.state.collectionTweets;
+    var numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(collectionTweets);
     var htmlMarkup;
 
     if (numberOfTweetsInCollection > 0){
@@ -61,7 +61,7 @@ var Collection = React.createClass({
             htmlMarkup={htmlMarkup} />
 
           <TweetList
-            tweets={this.state.collectionTweets} />
+            tweets={collectionTweets} />
 
         </div>
       );
