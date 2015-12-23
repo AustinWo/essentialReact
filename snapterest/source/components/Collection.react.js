@@ -3,12 +3,39 @@ var ReactDOMServer = require('react-dom/server');
 var CollectionControls = require('./CollectionControls.react');
 var TweetList = require('./TweetList.react');
 var Header = require('./Header.react');
+var CollectionUtils = require('../utils/CollectionUtils');
+var CollectionStore = require('../stores/CollectionStore');
 
 var Collection = React.createClass({
 
+  getInitialState: function() {
+    // set the collection of tweets to what is stored in CollectionStore at the moment
+    return {
+      collectionTweets: CollectionStore.getCollectionTweets()
+    };
+  },
+
+  componentDidMount: function() {
+    // add the change event listener this.onCollectionChange to CollectionStore
+    // whenever the collection of tweets is updated, CollectionStore will call this.onCollectionChange callback to notify the Collection component of that change
+    CollectionStore.addChangeListener(this.onCollectionChange);
+  },
+
+  componentWillUnmount: function() {
+    // remove the this.onCollectionChange change listener
+    CollectionStore.removeChangeListener(this.onCollectionChange);
+  },
+
+  onCollectionChange: function() {
+    // set the component state to whatever is stored in CollectionStore at the moment in time. Updating the component's state triggers rerendering
+    this.setState({
+      collectionTweets: CollectionStore.getCollectionTweets()
+    });
+  },
+
   createHtmlMarkupStringOfTweetList: function(){
     var htmlString = ReactDOMServer.renderToStaticMarkup(
-      <TweetList tweets={this.props.tweets} />
+      <TweetList tweets={this.state.collectionTweets} />
     );
 
     var htmlMarkup = {
@@ -17,32 +44,25 @@ var Collection = React.createClass({
 
     return JSON.stringify(htmlMarkup);
   },
-  getListOfTweetIds: function(){
-    return Object.keys(this.props.tweets);
-  },
-  getNumberOfTweetsInCollection: function(){
-    return this.getListOfTweetIds().length;
-  },
 
   render: function(){
-    var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
+    var CollectionTweets = this.state.collectionTweets;
+    var numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(this.state.collectionTweets);
+    var htmlMarkup;
 
     if (numberOfTweetsInCollection > 0){
-      var tweets = this.props.tweets;
       var htmlMarkup = this.createHtmlMarkupStringOfTweetList();
-      var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
-      var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
 
       return (
         <div>
+
           <CollectionControls
             numberOfTweetsInCollection={numberOfTweetsInCollection}
-            htmlMarkup={htmlMarkup}
-            onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection} />
+            htmlMarkup={htmlMarkup} />
 
           <TweetList
-            tweets={tweets}
-            onRemoveTweetFromCollection={handleRemoveTweetFromCollection} />
+            tweets={this.state.collectionTweets} />
+
         </div>
       );
     }
